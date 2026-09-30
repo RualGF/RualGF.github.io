@@ -4,179 +4,349 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Raúl Guillén Flores | Portfolio</title>
+  <!-- Google Fonts & Iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
   <style>
     :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
+      --bg: #0b0f19;
+      --surface: #111827;
+      --surface-card: #1f2937;
+      --border: #374151;
       --primary: #38bdf8;
-      --accent: #0ea5e9;
-      --border: #334155;
+      --primary-hover: #0284c7;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      padding: 2rem 1rem;
     }
-    .container { max-width: 800px; margin: 0 auto; }
-    header { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
-    h1 { font-size: 2.2rem; color: #fff; margin-bottom: 0.5rem; }
-    .tagline { font-size: 1.1rem; color: var(--primary); font-weight: 500; margin-bottom: 1rem; }
-    .links a {
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(17, 24, 39, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-weight: 700; color: #fff; text-decoration: none; font-size: 1.1rem; }
+    .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      margin-right: 1.2rem;
-      font-weight: 500;
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
       transition: color 0.2s;
     }
-    .links a:hover { color: var(--primary); }
-    section { margin-bottom: 3rem; }
-    h2 { font-size: 1.4rem; color: #fff; margin-bottom: 1rem; border-left: 4px solid var(--primary); padding-left: 0.6rem; }
-    p { color: var(--text-muted); margin-bottom: 1rem; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
-    @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 1.3rem;
+    .nav-links a:hover { color: var(--primary); }
+    .container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; }
+    
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem 0 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--primary);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--primary);
+    }
+    .hero h1 { font-size: 2.7rem; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 1rem; }
+    .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 650px; margin-bottom: 2rem; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--primary);
+      color: #0b0f19;
+      font-weight: 600;
+      padding: 0.7rem 1.4rem;
       border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover { background: var(--primary-hover); transform: translateY(-2px); }
+    .btn-secondary {
+      background: var(--surface-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-weight: 500;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-secondary:hover { background: #374151; transform: translateY(-2px); }
+
+    /* Sections */
+    section { padding: 4rem 0 1rem; }
+    .section-title {
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-title i { color: var(--primary); }
+    
+    /* Projects Grid */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 640px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .card h3 { font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem; }
-    .card p { font-size: 0.9rem; flex-grow: 1; }
-    .tags { margin: 0.8rem 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+    .card h3 { font-size: 1.2rem; color: #fff; margin-bottom: 0.6rem; font-weight: 600; }
+    .card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; flex-grow: 1; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
     .tag {
-      background: #0f172a;
+      background: rgba(56, 189, 248, 0.08);
       color: var(--primary);
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
       font-size: 0.75rem;
       font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.15);
     }
-    .btn {
-      display: inline-block;
-      color: var(--primary);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-top: 0.5rem;
-    }
-    .btn:hover { text-decoration: underline; }
-    .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .skill-badge {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
+    .card-link {
       color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
     }
-    footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+    .card-link:hover { color: var(--primary); }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .skill-card:hover { transform: translateY(-3px); border-color: var(--primary); }
+    .skill-card i { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+    .skill-card span { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+
+    footer {
+      text-align: center;
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">RG.dev</a>
+      <div class="nav-links">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#habilidades">Stack</a>
+        <a href="mailto:rualgf@gmail.com">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
   <div class="container">
-    <header>
+    <header class="hero">
+      <div class="hero-badge">Disponible para nuevos proyectos | Remoto & Híbrido</div>
       <h1>Raúl Guillén Flores</h1>
-      <div class="tagline">Desarrollador Backend (.NET / C#) & Analista de Datos</div>
-      <p>Puertollano, Ciudad Real (Disponible para remoto / híbrido)</p>
-      <div class="links">
-        <a href="https://github.com/RualGF" target="_blank">GitHub</a>
-        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-        <a href="mailto:rualgf@gmail.com">rualgf@gmail.com</a>
+      <p>Desarrollador Backend .NET (C#) y Analista de Datos. Rigor de sistemas, lógica backend y tratamiento de datos orientado a producción.</p>
+      <div class="hero-cta">
+        <a href="https://github.com/RualGF" target="_blank" class="btn-primary">
+          <i class="fa-brands fa-github"></i> Explorar GitHub
+        </a>
+        <a href="https://linkedin.com" target="_blank" class="btn-secondary">
+          <i class="fa-brands fa-linkedin"></i> Conectar en LinkedIn
+        </a>
       </div>
     </header>
 
-    <section>
-      <h2>Sobre mí</h2>
-      <p>
-        Profesional con base sólida en desarrollo backend, administración de sistemas y soporte técnico. Especializado en el diagnóstico y resolución de incidencias en entornos reales, diseño de APIs y gestión de bases de datos relacionales.
-      </p>
-      <p>
-        Cuento con experiencia en el ecosistema <strong>.NET (C#)</strong>, formación intensiva en <strong>Ciencia de Datos con Python</strong> y titulación oficial en Sistemas (FP Grado Superior) y Desarrollo Web. Aporto rigor técnico, alta templanza y disciplina operativa respaldada por más de 8 años de servicio en las Fuerzas Armadas.
-      </p>
-    </section>
-
-    <section>
-      <h2>Proyectos Destacados</h2>
+    <section id="proyectos">
+      <h2 class="section-title"><i class="fa-solid fa-code-branch"></i> Proyectos Destacados</h2>
       <div class="grid">
+        
         <div class="card">
           <div>
-            <h3>AEMET - Predicción Climática & Dashboard</h3>
-            <p>Aplicación web interactiva desarrollada con Streamlit conectada a modelos de Machine Learning para visualización climática en tiempo real.</p>
+            <h3>AEMET: Dashboard & ML</h3>
+            <p>Aplicación analítica interactiva construida en Streamlit con modelos predictivos de Machine Learning y consumo de APIs meteorológicas.</p>
             <div class="tags">
               <span class="tag">Python</span>
               <span class="tag">Streamlit</span>
               <span class="tag">Scikit-learn</span>
             </div>
           </div>
-          <a href="https://github.com/RualGF/AEMET" target="_blank" class="btn">Ver en GitHub &rarr;</a>
+          <a href="https://github.com/RualGF/AEMET" target="_blank" class="card-link">
+            Ver Repositorio <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
 
         <div class="card">
           <div>
-            <h3>Pipeline ETL & EDA - Coches de Ocasión</h3>
-            <p>Ingesta, limpieza profunda de datos y análisis exploratorio (EDA) de variables de mercado utilizando Pandas y visualización analítica.</p>
+            <h3>ETL & Limpieza de Datos</h3>
+            <p>Pipeline completo de ingesta, depuración de anomalías y análisis exploratorio (EDA) sobre datos del mercado automovilístico.</p>
             <div class="tags">
               <span class="tag">Python</span>
               <span class="tag">Pandas</span>
-              <span class="tag">ETL</span>
+              <span class="tag">EDA</span>
             </div>
           </div>
-          <a href="https://github.com/RualGF/Coches-de-segunda-mano---Analisis-y-limpieza--ETL-" target="_blank" class="btn">Ver en GitHub &rarr;</a>
+          <a href="https://github.com/RualGF/Coches-de-segunda-mano---Analisis-y-limpieza--ETL-" target="_blank" class="card-link">
+            Ver Repositorio <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
 
         <div class="card">
           <div>
-            <h3>Extracción de Datos (Web Scraping)</h3>
-            <p>Scripts modulares orientados a la extracción automatizada y estructuración de información web no tabulada.</p>
+            <h3>Web Scraping Automatizado</h3>
+            <p>Automatización de extracción de datos web y estructuración de información no tabulada para su consumo analítico.</p>
             <div class="tags">
               <span class="tag">Python</span>
-              <span class="tag">Scraping</span>
               <span class="tag">Automation</span>
+              <span class="tag">Scraping</span>
             </div>
           </div>
-          <a href="https://github.com/RualGF/Prueba-de-WebScraping" target="_blank" class="btn">Ver en GitHub &rarr;</a>
+          <a href="https://github.com/RualGF/Prueba-de-WebScraping" target="_blank" class="card-link">
+            Ver Repositorio <i class="fa-solid fa-arrow-right"></i>
+          </a>
         </div>
 
         <div class="card">
           <div>
-            <h3>Desarrollo Backend & APIs</h3>
-            <p>Servicios backend y desarrollo orientado a persistencia y consultas eficientes sobre bases de datos relacionales.</p>
+            <h3>Backend & API Services (.NET)</h3>
+            <p>Servicios RESTful desarrollados con ASP.NET Core, lógica de persistencia en SQL Server y aplicación de Clean Code.</p>
             <div class="tags">
               <span class="tag">C#</span>
-              <span class="tag">.NET</span>
+              <span class="tag">.NET Core</span>
               <span class="tag">SQL Server</span>
             </div>
           </div>
-          <a href="https://github.com/RualGF" target="_blank" class="btn">Ver Repositorios &rarr;</a>
+          <a href="https://github.com/RualGF" target="_blank" class="card-link">
+            Ver Repositorios <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="habilidades">
+      <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Stack Tecnológico</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="devicon-csharp-plain colored"></i>
+          <span>C#</span>
+        </div>
+        <div class="skill-card">
+          <i class="devicon-dot-net-plain-wordmark colored"></i>
+          <span>.NET Core</span>
+        </div>
+        <div class="skill-card">
+          <i class="devicon-python-plain colored"></i>
+          <span>Python</span>
+        </div>
+        <div class="skill-card">
+          <i class="devicon-microsoftsqlserver-plain colored"></i>
+          <span>SQL Server</span>
+        </div>
+        <div class="skill-card">
+          <i class="devicon-pandas-plain colored"></i>
+          <span>Pandas</span>
+        </div>
+        <div class="skill-card">
+          <i class="devicon-git-plain colored"></i>
+          <span>Git</span>
+        </div>
+        <div class="skill-card">
+          <i class="devicon-docker-plain colored"></i>
+          <span>Docker</span>
+        </div>
+        <div class="skill-card">
+          <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
+          <span>AWS</span>
         </div>
       </div>
     </section>
 
-    <section>
-      <h2>Tecnologías</h2>
-      <div class="skills-list">
-        <span class="skill-badge">C# / .NET Core</span>
-        <span class="skill-badge">Python</span>
-        <span class="skill-badge">SQL (Server, MySQL, PostgreSQL)</span>
-        <span class="skill-badge">REST APIs / FastAPI</span>
-        <span class="skill-badge">Pandas / NumPy</span>
-        <span class="skill-badge">Streamlit</span>
-        <span class="skill-badge">Git & GitHub</span>
-        <span class="skill-badge">AWS / Docker</span>
-      </div>
+    <section id="sobre-mi">
+      <h2 class="section-title"><i class="fa-solid fa-user"></i> Trayectoria</h2>
+      <p style="color: var(--text-muted); margin-bottom: 1rem;">
+        Técnico con formación oficial en Sistemas Informáticos (FP Grado Superior) y Desarrollo de Aplicaciones Web[cite: 1, 2], complementada con especialización intensiva en Ciencia de Datos[cite: 2]. Experiencia en resolución de incidencias en producción (Soporte N2) y desarrollo backend con .NET y bases de datos relacionales[cite: 1, 2].
+      </p>
+      <p style="color: var(--text-muted);">
+        Aporto madurez profesional, rigor analítico y templanza forjada a lo largo de más de 8 años en las Fuerzas Armadas[cite: 2]. Cuento con certificado de discapacidad del 33% reconocido y disponibilidad inmediata[cite: 1, 2].
+      </p>
     </section>
 
     <footer>
-      <p>&copy; Raúl Guillén Flores[cite: 1] &bull; Disponibilidad inmediata</p>
+      <p>&copy; 2026 Raúl Guillén Flores &bull; Puertollano / Madrid &bull; Remoto</p>
     </footer>
   </div>
+
 </body>
 </html>
