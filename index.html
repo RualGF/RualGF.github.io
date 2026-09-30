@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raúl Guillén Flores | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --accent: #0ea5e9;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    header { margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 2rem; }
+    h1 { font-size: 2.2rem; color: #fff; margin-bottom: 0.5rem; }
+    .tagline { font-size: 1.1rem; color: var(--primary); font-weight: 500; margin-bottom: 1rem; }
+    .links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-right: 1.2rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .links a:hover { color: var(--primary); }
+    section { margin-bottom: 3rem; }
+    h2 { font-size: 1.4rem; color: #fff; margin-bottom: 1rem; border-left: 4px solid var(--primary); padding-left: 0.6rem; }
+    p { color: var(--text-muted); margin-bottom: 1rem; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+    @media (min-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 1.3rem;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card h3 { font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem; }
+    .card p { font-size: 0.9rem; flex-grow: 1; }
+    .tags { margin: 0.8rem 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      background: #0f172a;
+      color: var(--primary);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .btn {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    .btn:hover { text-decoration: underline; }
+    .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-badge {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    footer { text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Raúl Guillén Flores</h1>
+      <div class="tagline">Desarrollador Backend (.NET / C#) & Analista de Datos</div>
+      <p>Puertollano, Ciudad Real (Disponible para remoto / híbrido)</p>
+      <div class="links">
+        <a href="https://github.com/RualGF" target="_blank">GitHub</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="mailto:rualgf@gmail.com">rualgf@gmail.com</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>Sobre mí</h2>
+      <p>
+        Profesional con base sólida en desarrollo backend, administración de sistemas y soporte técnico. Especializado en el diagnóstico y resolución de incidencias en entornos reales, diseño de APIs y gestión de bases de datos relacionales.
+      </p>
+      <p>
+        Cuento con experiencia en el ecosistema <strong>.NET (C#)</strong>, formación intensiva en <strong>Ciencia de Datos con Python</strong> y titulación oficial en Sistemas (FP Grado Superior) y Desarrollo Web. Aporto rigor técnico, alta templanza y disciplina operativa respaldada por más de 8 años de servicio en las Fuerzas Armadas.
+      </p>
+    </section>
+
+    <section>
+      <h2>Proyectos Destacados</h2>
+      <div class="grid">
+        <div class="card">
+          <div>
+            <h3>AEMET - Predicción Climática & Dashboard</h3>
+            <p>Aplicación web interactiva desarrollada con Streamlit conectada a modelos de Machine Learning para visualización climática en tiempo real.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Streamlit</span>
+              <span class="tag">Scikit-learn</span>
+            </div>
+          </div>
+          <a href="https://github.com/RualGF/AEMET" target="_blank" class="btn">Ver en GitHub &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <h3>Pipeline ETL & EDA - Coches de Ocasión</h3>
+            <p>Ingesta, limpieza profunda de datos y análisis exploratorio (EDA) de variables de mercado utilizando Pandas y visualización analítica.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">ETL</span>
+            </div>
+          </div>
+          <a href="https://github.com/RualGF/Coches-de-segunda-mano---Analisis-y-limpieza--ETL-" target="_blank" class="btn">Ver en GitHub &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <h3>Extracción de Datos (Web Scraping)</h3>
+            <p>Scripts modulares orientados a la extracción automatizada y estructuración de información web no tabulada.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Scraping</span>
+              <span class="tag">Automation</span>
+            </div>
+          </div>
+          <a href="https://github.com/RualGF/Prueba-de-WebScraping" target="_blank" class="btn">Ver en GitHub &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div>
+            <h3>Desarrollo Backend & APIs</h3>
+            <p>Servicios backend y desarrollo orientado a persistencia y consultas eficientes sobre bases de datos relacionales.</p>
+            <div class="tags">
+              <span class="tag">C#</span>
+              <span class="tag">.NET</span>
+              <span class="tag">SQL Server</span>
+            </div>
+          </div>
+          <a href="https://github.com/RualGF" target="_blank" class="btn">Ver Repositorios &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Tecnologías</h2>
+      <div class="skills-list">
+        <span class="skill-badge">C# / .NET Core</span>
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">SQL (Server, MySQL, PostgreSQL)</span>
+        <span class="skill-badge">REST APIs / FastAPI</span>
+        <span class="skill-badge">Pandas / NumPy</span>
+        <span class="skill-badge">Streamlit</span>
+        <span class="skill-badge">Git & GitHub</span>
+        <span class="skill-badge">AWS / Docker</span>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; Raúl Guillén Flores[cite: 1] &bull; Disponibilidad inmediata</p>
+    </footer>
+  </div>
+</body>
+</html>
