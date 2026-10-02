@@ -1,166 +1,66 @@
-:root {
-  --bg: #0d1117;
-  --terminal-bar: #161b22;
-  --card-bg: #111720;
-  --border: #30363d;
-  --neon: #00ff66;
-  --text: #c9d1d9;
-  --text-muted: #8b949e;
-  --prompt: #58a6ff;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Fira Code', monospace;
-  background-color: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-}
-
-.navbar {
-  position: sticky;
-  top: 0;
-  background: rgba(13, 17, 23, 0.95);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
-  z-index: 100;
-  padding: 0.8rem 0;
-}
-
-.nav-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+/* Avatar y layout de cabecera */
+.hero-layout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column-reverse;
+  gap: 1.5rem;
 }
-
-.nav-logo {
-  color: var(--neon);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1rem;
+@media (min-width: 650px) {
+  .hero-layout {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
-
-.nav-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  margin-left: 1.2rem;
-  font-size: 0.85rem;
-  transition: color 0.2s;
+.avatar-container {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
 }
-
-.nav-links a:hover, .nav-links a.active {
-  color: var(--neon);
-  text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
-}
-
-.container { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; }
-
-/* Ventana estilo terminal */
-.terminal-window {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
+.terminal-avatar {
+  width: 140px;
+  height: 140px;
   border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 2.5rem;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  border: 2px solid var(--neon);
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.25);
+  object-fit: cover;
+  background-color: var(--terminal-bar);
 }
 
-.terminal-header {
-  background: var(--terminal-bar);
-  padding: 0.5rem 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  border-bottom: 1px solid var(--border);
+/* Iconos de stack interactivos */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
 }
-
-.dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
-.dot-red { background: #ff5f56; }
-.dot-yellow { background: #ffbd2e; }
-.dot-green { background: #27c93f; }
-.terminal-title { margin-left: 0.5rem; font-size: 0.75rem; color: var(--text-muted); }
-.terminal-body { padding: 2rem; }
-
-.prompt-line {
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  margin-bottom: 0.5rem;
-}
-.prompt-user { color: var(--prompt); }
-.prompt-char { color: var(--neon); }
-
-h1 { font-size: 2.2rem; color: #fff; margin-bottom: 0.5rem; }
-.role-title { color: var(--neon); font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
-
-/* Botones */
-.btn-hacker {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1.1rem;
-  font-size: 0.85rem;
-  font-family: inherit;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.btn-primary {
-  background: rgba(0, 255, 102, 0.1);
-  color: var(--neon);
-  border: 1px solid var(--neon);
-}
-.btn-primary:hover {
-  background: var(--neon);
-  color: #000;
-  box-shadow: 0 0 12px rgba(0, 255, 102, 0.5);
-}
-
-.btn-secondary {
-  background: var(--terminal-bar);
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-.btn-secondary:hover {
-  border-color: var(--text-muted);
-  color: #fff;
-}
-
-/* Tarjetas y cajas detalladas */
-.detail-card {
+.skill-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 1.8rem;
-  margin-bottom: 2rem;
-  transition: border-color 0.2s;
-}
-.detail-card:hover { border-color: var(--neon); }
-
-.detail-card h2 { font-size: 1.3rem; color: #fff; margin-bottom: 0.4rem; }
-.detail-card .meta { color: var(--prompt); font-size: 0.85rem; margin-bottom: 1rem; }
-
-.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0; }
-.tag {
-  font-size: 0.72rem;
-  color: var(--neon);
-  background: rgba(0, 255, 102, 0.08);
-  border: 1px solid rgba(0, 255, 102, 0.25);
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
-}
-
-footer {
+  padding: 1.2rem 0.8rem;
   text-align: center;
-  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+.skill-card:hover {
+  border-color: var(--neon);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 255, 102, 0.1);
+}
+.skill-card i {
+  font-size: 2.2rem;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.skill-card span {
+  font-size: 0.82rem;
   color: var(--text-muted);
-  border-top: 1px solid var(--border);
-  padding: 2.5rem 0 1rem;
-  margin-top: 3rem;
+  font-weight: 500;
+}
+
+/* Descarga de CVs y Contacto */
+.cv-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.2rem;
 }
