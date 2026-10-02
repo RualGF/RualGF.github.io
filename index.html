@@ -3,451 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>raul@system:~$ portfolio</title>
-  
-  <!-- Fuente Monoespaciada Hacker & Iconos -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Raúl Guillén | Terminal</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-  <style>
-    :root {
-      --bg: #0d1117;
-      --terminal-bar: #161b22;
-      --card-bg: #111720;
-      --border: #30363d;
-      --green: #2ea043;
-      --green-glow: #3fb950;
-      --neon: #00ff66;
-      --text: #c9d1d9;
-      --text-muted: #8b949e;
-      --prompt: #58a6ff;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    
-    body {
-      font-family: 'Fira Code', monospace;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* Barra Superior Terminal */
-    .navbar {
-      position: sticky;
-      top: 0;
-      background: rgba(13, 17, 23, 0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      z-index: 100;
-      padding: 0.8rem 0;
-    }
-
-    .nav-container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-logo {
-      color: var(--neon);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      margin-left: 1.2rem;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--neon);
-      text-shadow: 0 0 8px rgba(0, 255, 102, 0.4);
-    }
-
-    .container { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; }
-
-    /* Hero / Terminal Prompt */
-    .terminal-window {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 3rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    }
-
-    .terminal-header {
-      background: var(--terminal-bar);
-      padding: 0.5rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
-    .dot-red { background: #ff5f56; }
-    .dot-yellow { background: #ffbd2e; }
-    .dot-green { background: #27c93f; }
-    .terminal-title { margin-left: 0.5rem; font-size: 0.75rem; color: var(--text-muted); }
-
-    .terminal-body { padding: 2rem; }
-
-    .prompt-line {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 0.5rem;
-    }
-    .prompt-user { color: var(--prompt); }
-    .prompt-char { color: var(--neon); }
-
-    h1 {
-      font-size: 2.3rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
-    }
-
-    .role-title {
-      color: var(--neon);
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .hero-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.8rem;
-      max-width: 700px;
-    }
-
-    .hero-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-
-    .btn-hacker {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.55rem 1.1rem;
-      font-size: 0.85rem;
-      font-family: inherit;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: rgba(0, 255, 102, 0.1);
-      color: var(--neon);
-      border: 1px solid var(--neon);
-    }
-    .btn-primary:hover {
-      background: var(--neon);
-      color: #000;
-      box-shadow: 0 0 12px rgba(0, 255, 102, 0.5);
-    }
-
-    .btn-secondary {
-      background: var(--terminal-bar);
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-secondary:hover {
-      border-color: var(--text-muted);
-      color: #fff;
-    }
-
-    /* Secciones */
-    section { margin-bottom: 3.5rem; }
-
-    .section-title {
-      font-size: 1.3rem;
-      color: #fff;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .section-title span { color: var(--neon); }
-
-    /* Tarjetas de Proyectos */
-    .grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
-    @media (min-width: 650px) { .grid { grid-template-columns: 1fr 1fr; } }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .card:hover {
-      border-color: var(--neon);
-      transform: translateY(-2px);
-    }
-
-    .card h3 {
-      font-size: 1.05rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-    }
-
-    .card p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      flex-grow: 1;
-    }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
-    
-    .tag {
-      font-size: 0.72rem;
-      color: var(--neon);
-      background: rgba(0, 255, 102, 0.08);
-      border: 1px solid rgba(0, 255, 102, 0.25);
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-    }
-
-    .card-link {
-      font-size: 0.85rem;
-      color: var(--prompt);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-weight: 500;
-    }
-    .card-link:hover { text-decoration: underline; }
-
-    /* Cuadrícula de Tecnologías */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 0.8rem;
-    }
-
-    .skill-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.9rem;
-      text-align: center;
-      transition: border-color 0.2s;
-    }
-
-    .skill-card:hover { border-color: var(--neon); }
-    .skill-card i { font-size: 1.8rem; margin-bottom: 0.4rem; display: block; }
-    .skill-card span { font-size: 0.8rem; color: var(--text-muted); }
-
-    /* Bloque Trayectoria */
-    .terminal-box {
-      background: var(--card-bg);
-      border-left: 3px solid var(--neon);
-      padding: 1.2rem;
-      border-radius: 0 6px 6px 0;
-      margin-bottom: 1rem;
-    }
-    .terminal-box p { font-size: 0.9rem; color: var(--text-muted); }
-
-    footer {
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <nav class="navbar">
     <div class="nav-container">
-      <a href="#" class="nav-logo">raul@sys:~$</a>
+      <a href="index.html" class="nav-logo">raul@sys:~$</a>
       <div class="nav-links">
-        <a href="#proyectos">// proyectos</a>
-        <a href="#stack">// stack</a>
-        <a href="#trayectoria">// trayectoria</a>
+        <a href="index.html" class="active">// inicio</a>
+        <a href="proyectos.html">// proyectos</a>
+        <a href="trayectoria.html">// trayectoria</a>
+        <a href="stack.html">// stack</a>
         <a href="mailto:rualgf@gmail.com">// contacto</a>
       </div>
     </div>
   </nav>
 
   <div class="container">
-    
-    <!-- Ventana Terminal Hero -->
     <div class="terminal-window">
       <div class="terminal-header">
         <span class="dot dot-red"></span>
         <span class="dot dot-yellow"></span>
         <span class="dot dot-green"></span>
-        <span class="terminal-title">bash — 80x24</span>
+        <span class="terminal-title">bash — home</span>
       </div>
       <div class="terminal-body">
-        <div class="prompt-line">
-          <span class="prompt-user">raul@portfolio</span>:<span class="prompt-char">~</span>$ whoami
-        </div>
+        <div class="prompt-line"><span class="prompt-user">raul@portfolio</span>:<span class="prompt-char">~</span>$ whoami</div>
         <h1>Raúl Guillén Flores</h1>
         <div class="role-title">&gt; Desarrollador Backend .NET (C#) y Analista de Datos</div>
-        <p class="hero-desc">
-          Resolución técnica de incidencias, optimización de bases de datos relacionales, desarrollo de APIs y pipelines de tratamiento de datos con enfoque en estabilidad operativa.
+        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+          Especializado en resolución de incidencias, optimización de consultas SQL, creación de APIs robustas y desarrollo de pipelines de datos.
         </p>
-        <div class="hero-cta">
-          <a href="https://github.com/RualGF" target="_blank" class="btn-hacker btn-primary">
-            <i class="fa-brands fa-github"></i> [ Ver GitHub ]
-          </a>
-          <a href="https://linkedin.com" target="_blank" class="btn-hacker btn-secondary">
-            <i class="fa-brands fa-linkedin"></i> [ LinkedIn ]
-          </a>
-          <a href="mailto:rualgf@gmail.com" class="btn-hacker btn-secondary">
-            <i class="fa-solid fa-envelope"></i> [ Contactar ]
-          </a>
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+          <a href="proyectos.html" class="btn-hacker btn-primary"><i class="fa-solid fa-code"></i> [ Ver Proyectos ]</a>
+          <a href="trayectoria.html" class="btn-hacker btn-secondary"><i class="fa-solid fa-user"></i> [ Conocer Trayectoria ]</a>
+          <a href="https://github.com/RualGF" target="_blank" class="btn-hacker btn-secondary"><i class="fa-brands fa-github"></i> [ GitHub ]</a>
         </div>
       </div>
     </div>
 
-    <!-- Proyectos -->
-    <section id="proyectos">
-      <h2 class="section-title"><span>#</span> proyectos_destacados</h2>
-      <div class="grid">
-        
-        <div class="card">
-          <div>
-            <h3>AEMET: Dashboard y ML</h3>
-            <p>Aplicación analítica interactiva construida con Streamlit, modelos predictivos de Machine Learning y consumo de APIs meteorológicas.</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Streamlit</span>
-              <span class="tag">Scikit-learn</span>
-            </div>
-          </div>
-          <a href="https://github.com/RualGF/AEMET" target="_blank" class="card-link">
-            $ git clone repo &rarr;
-          </a>
-        </div>
-
-        <div class="card">
-          <div>
-            <h3>ETL y Limpieza de Datos</h3>
-            <p>Pipeline completo de ingesta, depuración de anomalías y análisis exploratorio (EDA) sobre datos del mercado de ocasión.</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">ETL</span>
-            </div>
-          </div>
-          <a href="https://github.com/RualGF/Coches-de-segunda-mano---Analisis-y-limpieza--ETL-" target="_blank" class="card-link">
-            $ git clone repo &rarr;
-          </a>
-        </div>
-
-        <div class="card">
-          <div>
-            <h3>Web Scraping Automatizado</h3>
-            <p>Scripts modulares orientados a la extracción automática de datos web no tabulados para estructuración analítica.</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Automation</span>
-              <span class="tag">Scraping</span>
-            </div>
-          </div>
-          <a href="https://github.com/RualGF/Prueba-de-WebScraping" target="_blank" class="card-link">
-            $ git clone repo &rarr;
-          </a>
-        </div>
-
-        <div class="card">
-          <div>
-            <h3>Backend y Servicios API (.NET)</h3>
-            <p>Desarrollo backend en C# y .NET enfocado en lógica de persistencia, consultas relacionales en SQL Server y Clean Code.</p>
-            <div class="tags">
-              <span class="tag">C#</span>
-              <span class="tag">.NET Core</span>
-              <span class="tag">SQL Server</span>
-            </div>
-          </div>
-          <a href="https://github.com/RualGF" target="_blank" class="card-link">
-            $ ls repositories &rarr;
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Stack Tecnológico -->
-    <section id="stack">
-      <h2 class="section-title"><span>#</span> stack_tecnologico</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <i class="devicon-csharp-plain colored"></i>
-          <span>C#</span>
-        </div>
-        <div class="skill-card">
-          <i class="devicon-dot-net-plain-wordmark colored"></i>
-          <span>.NET Core</span>
-        </div>
-        <div class="skill-card">
-          <i class="devicon-python-plain colored"></i>
-          <span>Python</span>
-        </div>
-        <div class="skill-card">
-          <i class="devicon-microsoftsqlserver-plain colored"></i>
-          <span>SQL Server</span>
-        </div>
-        <div class="skill-card">
-          <i class="devicon-pandas-plain colored"></i>
-          <span>Pandas</span>
-        </div>
-        <div class="skill-card">
-          <i class="devicon-git-plain colored"></i>
-          <span>Git</span>
-        </div>
-        <div class="skill-card">
-          <i class="devicon-docker-plain colored"></i>
-          <span>Docker</span>
-        </div>
-        <div class="skill-card">
-          <i class="devicon-amazonwebservices-plain-wordmark colored"></i>
-          <span>AWS</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Trayectoria -->
-    <section id="trayectoria">
-      <h2 class="section-title"><span>#</span> trayectoria_profesional</h2>
-      <div class="terminal-box">
-        <p style="margin-bottom: 0.8rem;">
-          <strong>Perfil Técnico:</strong> Formación en Sistemas Informáticos (FP Grado Superior) y Desarrollo de Aplicaciones Web, con especialización intensiva en Ciencia de Datos y Machine Learning. Experiencia en resolución de incidencias en producción (Soporte N2) y desarrollo backend con .NET y bases de datos relacionales.
-        </p>
-        <p>
-          <strong>Madurez Operativa:</strong> Más de 8 años de trayectoria en las Fuerzas Armadas, aportando disciplina, templanza y rigor en situaciones complejas. Certificado de discapacidad del 33% reconocido y disponibilidad inmediata.
-        </p>
-      </div>
-    </section>
+    <div class="detail-card">
+      <h2>// visión_general</h2>
+      <p style="color: var(--text-muted); margin-top: 0.5rem;">
+        Bienvenido a mi espacio técnico. Este portfolio está organizado por áreas de especialización para que puedas examinar en detalle la arquitectura de mis proyectos, mi formación reglada y mi experiencia real en entornos de producción y soporte informático.
+      </p>
+    </div>
 
     <footer>
-      <p>// Proceso finalizado con código de salida 0. Puertollano / Madrid • 2026</p>
+      <p>// Estado: Abierto a oportunidades • Puertollano / Madrid (Remoto e Híbrido)</p>
     </footer>
-
   </div>
 
 </body>
