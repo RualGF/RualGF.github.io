@@ -178,6 +178,7 @@ footer {
     justify-content: space-between;
   }
 }
+/* Avatar sin marco integrado directamente en el fondo */
 .avatar-container {
   flex-shrink: 0;
   display: flex;
@@ -185,12 +186,12 @@ footer {
 }
 .terminal-avatar {
   width: 140px;
-  height: 140px;
-  border-radius: 8px;
-  border: 2px solid var(--neon);
-  box-shadow: 0 0 15px rgba(0, 255, 102, 0.25);
-  object-fit: cover;
-  background-color: var(--terminal-bar);
+  height: auto;
+  max-height: 150px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
 }
 
 /* Iconos de stack interactivos */
@@ -224,10 +225,40 @@ footer {
   font-weight: 500;
 }
 
-/* Descarga de CVs y Contacto */
-.cv-box {
-  display: flex;
-  flex-wrap: wrap;
+/* Cuadrícula para los 3 CVs (se adapta a 3 columnas en PC y 1 en móvil) */
+.cv-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
   margin-top: 1.2rem;
+}
+@media (min-width: 680px) {
+  .cv-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.cv-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1rem 0.8rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.82rem;
+  transition: all 0.2s ease;
+}
+.cv-btn i {
+  font-size: 1.6rem;
+  color: var(--neon);
+  margin-bottom: 0.5rem;
+}
+.cv-btn:hover {
+  border-color: var(--neon);
+  transform: translateY(-2px);
+  color: #fff;
 }
