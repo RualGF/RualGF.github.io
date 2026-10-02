@@ -178,20 +178,24 @@ footer {
     justify-content: space-between;
   }
 }
-/* Avatar sin marco integrado directamente en el fondo */
+
+/* Corrección de la foto: preserva proporciones originales sin estirar */
 .avatar-container {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
+
 .terminal-avatar {
-  width: 140px;
+  width: auto;
+  max-width: 150px;
   height: auto;
-  max-height: 150px;
+  max-height: 190px;
+  object-fit: contain; /* Evita que se ensanche o deforme */
   border: none;
-  box-shadow: none;
   background: transparent;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.7));
 }
 
 /* Iconos de stack interactivos */
@@ -292,3 +296,25 @@ footer {
   color: #fff;
   transform: translateY(-2px);
 }
+
+/* Rejilla de proyectos compacta para la portada */
+.mini-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+@media (min-width: 650px) {
+  .mini-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Enlace a páginas completas */
+.explore-link {
+  display: inline-block;
+  margin-top: 1.2rem;
+  color: var(--prompt);
+  font-size: 0.85rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+.explore-link:hover { text-decoration: underline; color: var(--neon); }
