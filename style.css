@@ -262,3 +262,33 @@ footer {
   transform: translateY(-2px);
   color: #fff;
 }
+
+/* Barra de canales de contacto con iconos */
+.contact-icons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.contact-icon-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--terminal-bar);
+  border: 1px solid var(--border);
+  padding: 0.7rem 1.1rem;
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+.contact-icon-card i {
+  font-size: 1.2rem;
+  color: var(--neon);
+}
+.contact-icon-card:hover {
+  border-color: var(--neon);
+  color: #fff;
+  transform: translateY(-2px);
+}
