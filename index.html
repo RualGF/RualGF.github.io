@@ -18,7 +18,7 @@
         <a href="proyectos.html">// proyectos</a>
         <a href="trayectoria.html">// trayectoria</a>
         <a href="stack.html">// stack</a>
-        <a href="mailto:rualgf@gmail.com">// contacto</a>
+        <a href="contacto.html">// contacto</a>
       </div>
     </div>
   </nav>
@@ -32,25 +32,46 @@
         <span class="terminal-title">bash — home</span>
       </div>
       <div class="terminal-body">
-        <div class="prompt-line"><span class="prompt-user">raul@portfolio</span>:<span class="prompt-char">~</span>$ whoami</div>
-        <h1>Raúl Guillén Flores</h1>
-        <div class="role-title">&gt; Desarrollador Backend .NET (C#) y Analista de Datos</div>
-        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-          Especializado en resolución de incidencias, optimización de consultas SQL, creación de APIs robustas y desarrollo de pipelines de datos.
-        </p>
-        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+        
+        <div class="hero-layout">
+          <div>
+            <div class="prompt-line"><span class="prompt-user">raul@portfolio</span>:<span class="prompt-char">~</span>$ whoami</div>
+            <h1>Raúl Guillén Flores</h1>
+            <div class="role-title">&gt; Desarrollador Backend .NET (C#) y Analista de Datos</div>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+              Especializado en resolución de incidencias, optimización de consultas SQL, creación de APIs y tratamiento de datos con enfoque en estabilidad operativa.
+            </p>
+          </div>
+          
+          <div class="avatar-container">
+            <!-- Si no tienes la foto subida todavía, se mostrará el avatar genérico -->
+            <img src="foto.jpg" alt="Raúl Guillén Flores" class="terminal-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Raul+Guillen&background=161b22&color=00ff66&size=200'">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem;">
           <a href="proyectos.html" class="btn-hacker btn-primary"><i class="fa-solid fa-code"></i> [ Ver Proyectos ]</a>
-          <a href="trayectoria.html" class="btn-hacker btn-secondary"><i class="fa-solid fa-user"></i> [ Conocer Trayectoria ]</a>
+          <a href="contacto.html" class="btn-hacker btn-secondary"><i class="fa-solid fa-id-card"></i> [ Contacto & CVs ]</a>
           <a href="https://github.com/RualGF" target="_blank" class="btn-hacker btn-secondary"><i class="fa-brands fa-github"></i> [ GitHub ]</a>
         </div>
+
       </div>
     </div>
 
+    <!-- Módulo de Descarga Rápida de CV -->
     <div class="detail-card">
-      <h2>// visión_general</h2>
-      <p style="color: var(--text-muted); margin-top: 0.5rem;">
-        Bienvenido a mi espacio técnico. Este portfolio está organizado por áreas de especialización para que puedas examinar en detalle la arquitectura de mis proyectos, mi formación reglada y mi experiencia real en entornos de producción y soporte informático.
+      <h2>// curriculum_vitae</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem;">
+        Formatos resumidos de 1 página listos para procesos de selección técnicos:
       </p>
+      <div class="cv-box">
+        <a href="CV_Backend_Raul_Guillen.pdf" download class="btn-hacker btn-secondary">
+          <i class="fa-solid fa-file-pdf" style="color: var(--neon);"></i> Descargar CV Backend (.NET)
+        </a>
+        <a href="CV_Data_Raul_Guillen.pdf" download class="btn-hacker btn-secondary">
+          <i class="fa-solid fa-file-pdf" style="color: var(--neon);"></i> Descargar CV Datos (Python/SQL)
+        </a>
+      </div>
     </div>
 
     <footer>
